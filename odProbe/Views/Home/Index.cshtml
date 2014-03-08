@@ -16,9 +16,14 @@
         alternatingRowStyle: "alt",
         columns: grid.Columns(
             grid.Column("Title"),
-            grid.Column("Name", format: @<text>@Html.ActionLink((string)item.Name,
- 
-            "CsvData", "Wfs", new {id=item.Title}, null)</text>),
+            grid.Column("Name", format: @<text>@Html.ActionLink((string)item.Name, "CsvData", "Wfs", 
+                                                new { 
+                                                        title = item.Title,
+                                                        name = item.Name,
+                                                        @abstract = item.Abstract,
+                                                        defaultSRS = item.DefaultSRS,
+                                                        keywords = item.Keywords
+                                                    }, null)</text>),
             grid.Column("Abstract")
         )
     )

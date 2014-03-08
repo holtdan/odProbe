@@ -1,4 +1,5 @@
-﻿using System;
+﻿using odProbe.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,8 +18,9 @@ namespace odProbe.Controllers
             return View();
         }
         //[ValidateInput(false)]
-        public ActionResult CsvData(string id)
+        public ActionResult CsvData(string title, string name, string @abstract, string defaultSRS, string keywords)
         {
+
             return View();
         }
     }
