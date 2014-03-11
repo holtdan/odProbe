@@ -20,8 +20,8 @@ namespace odProbe.Controllers
         //[ValidateInput(false)]
         public ActionResult CsvData(string title, string name, string @abstract, string defaultSRS, string keywords)
         {
-
-            return View();
+            var fd = FeatureDetail.GetFeatureDetail(title, name, @abstract, defaultSRS, keywords);
+            return View(fd);
         }
     }
 }

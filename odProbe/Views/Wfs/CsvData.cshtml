@@ -1,5 +1,38 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model odProbe.Models.FeatureDetail
+@{
+    ViewBag.Title = "CVS Data";
 }
 
-<h2>Index</h2>
+<h2>@Model.FeatureType.Title</h2>
+<h3>@Model.FeatureType.Name</h3>
+<p>@Model.Data.Count() data rows.</p>
+<p>
+    Query:<br/>
+    @Model.QueryString
+</p>
+<div id="csvData">
+    @if ( Model.Headings != null )
+    {
+        <table class="table table-striped table-condensed table-responsive">
+            <tr>
+                @foreach ( var h in Model.Headings )
+                {
+                    <th>@(h==null?"<null>":h)</th>
+                }
+            </tr>
+            @foreach (var d in Model.Data)
+            {
+                <tr>
+                @foreach (var s in d)
+                {
+                        <td>@(s)</td>
+                }
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        @:No CSV data
+    }
+</div>
