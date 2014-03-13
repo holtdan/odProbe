@@ -51,6 +51,14 @@ namespace odProbe.Models
                         }
                         else
                         {
+                            var ptsPos = rl.IndexOf("MULTIPOLYGON");
+                            if (ptsPos >= 0)
+                            {
+                                var ptsEnd = rl.IndexOf(")))", ptsPos);
+
+                                rl = rl.Substring(0, ptsPos + 12) +
+                                    rl.Substring(ptsEnd);
+                            }
                             fd.Data.Add(rl.Split(','));
                         }
                         rl = strReader.ReadLine();
